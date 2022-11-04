@@ -26,17 +26,29 @@ rutas.use( function(req,res,next){
 })
 
 rutas.put('/estudiantes/:id', async(req,res,next) =>{
+    console.log("Este es el metodo PUT");
     const id = req.params.id;
-    await Estud.updateOne( {id:id}, {$set:{aprobado:true}});
+    await Estud.updateOne( {id:id}, {$set:{aprobado:true}})
+    console.log(id);
     res.redirect('/');
 })
 
 
 rutas.delete('/estudiantes/:id', async(req,res,next) => {
-    //console.log("Este es el verdadero DELETE");
+    console.log("Este es el verdadero DELETE");
     const id = req.params.id;
     await Estud.deleteOne({id:id})
     console.log(id);
+    res.redirect('/');
+})
+
+//PENDIENTE PORQUE TODAVIA NO FUNCIONA.
+//Buscar estudiante
+rutas.get('/estudiantes', async(req,res) =>{
+    //console.log("Este es el get");
+    const id = req.query.id;
+    const user = await Estud.findOne({id:id});
+    console.log(user);
     res.redirect('/');
 })
 
@@ -48,17 +60,6 @@ rutas.get('/', async(req,res)=>{
     //console.log(listaEstudiantes);
     res.render("hola.ejs", {listaEstudiantes});
 });
-
-//PENDIENTE PORQUE TODAVIA NO FUNCIONA.
-//Buscar estudiante
-rutas.get('/estudiantes/:id', async(req,res) =>{
-    //console.log("Este es el get");
-    const id = req.params.id;
-    const estudiante = await Estud.findOne({id:id});
-    console.log(estudiante);
-    res.redirect('/');
-})
-
 
 //Insertar estudiante
 rutas.post('/estudiantes', async(req,res) => {
