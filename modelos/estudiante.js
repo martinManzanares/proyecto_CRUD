@@ -2,7 +2,6 @@
 const mongoose = require('mongoose');
 const esquema = mongoose.Schema;
 
-
 const estudianteEsquema = new esquema({
     id: String,
     nombre: String,

@@ -24,38 +24,41 @@
             <th> Aprobado </th>
             <th> Operaciones </th>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody class="table-group-divider" >
             <% for(var i=0; i<listaEstudiantes.length; i++){ %>
             <tr> 
-                <td> <%=listaEstudiantes[i].id %> </td>
+                <th> <%=listaEstudiantes[i].id %> </th>
                 <td> <%=listaEstudiantes[i].nombre %> </td>
                 <td> <%=listaEstudiantes[i].aprobado %> </td>
                 <td> 
-                    <a href="/estudiantes/<%=listaEstudiantes[i].id%>?_method=PUT" class="btn btn-success"> Aprobar </a>
+                    <a href="/estudiantes/<%=listaEstudiantes[i].id%>?_method=PUT" class="btn btn-outline-warning"> A / R </a>
                     <a href="/estudiantes/<%=listaEstudiantes[i].id%>?_method=DELETE" class="btn btn-danger"> Eliminar </a>
                 </td>
             </tr>
             <% } %>
         </tbody>
-    </table>  
+    </table> 
 
     <form action="/estudiantes" method="GET">
-        <br/><input type="text" name="id" placeholder="busqueda por ID" /><br/>
-        <input type="submit" name="Buscar" />   
+        <br/><input type="text" name="id" placeholder="Busqueda por ID" /><br/>
+        <input type="submit"  />   
     </form>
+    
     <table id="tablaEstudiantes"> 
         <thead>
             <th> ID </th>
             <th> Nombre </th>
             <th> Aprobado </th>
-            <th> Operaciones </th>
         </thead>
         <tbody class="table-group-divider">
-            <tr> 
-                <td> <%=listaEstudiantes.id %> </td>
-                <td> <%=listaEstudiantes.nombre %> </td>
-                <td> <%=listaEstudiantes.aprobado %> </td>
-            </tr>
+            
+                <tr> 
+                    <th> <%=estudiante.id %> </th>
+                    <td> <%=estudiante.nombre %> </td>
+                    <td> <%=estudiante.aprobado %> </td>
+                </tr>
+            
         </tbody>
+    </table>   
 </body>
 </html>
